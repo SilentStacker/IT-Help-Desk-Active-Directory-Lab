@@ -1,4 +1,4 @@
-# 🛠️ Troubleshooting Log – osTicket Deployment
+#  Troubleshooting Log – osTicket Deployment
 
 ## Overview
 This document outlines issues encountered while deploying osTicket on Fedora Linux and the steps taken to resolve them.
