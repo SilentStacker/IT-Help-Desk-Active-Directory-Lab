@@ -1,68 +1,100 @@
-# Help Desk Ticketing Lab (osTicket)
+# 🛠️ Help Desk Ticketing Lab (osTicket)
+
+> Deployed and troubleshot a full IT help desk environment using Linux, Apache, PHP, and MariaDB.
+
+---
 
 ## 📌 Overview
-This project demonstrates a simulated IT help desk environment built using osTicket. It showcases hands-on experience with ticket management, troubleshooting workflows, and common IT support scenarios.
 
-The goal of this lab is to replicate real-world help desk responsibilities, including resolving user issues, managing tickets, and documenting solutions.
+This project simulates a real-world IT help desk environment using osTicket.  
+It focuses on hands-on experience with ticket management, system deployment, and troubleshooting common IT issues.
 
----
-
-## 🛠 Technologies Used
-- osTicket (Ticketing System)
-- Windows / Linux Environment
-- Apache / MySQL / PHP (LAMP/LEMP stack)
-- Virtualization (Proxmox / Virtual Machines)
+The lab replicates real support workflows including diagnosing problems, resolving user issues, and documenting solutions.
 
 ---
 
-## ⚙️ Installation & Setup
-- Installed and configured osTicket in a local environment
-- Set up web server and database services
-- Configured admin panel, user roles, and permissions
-- Created a functional help desk system for ticket simulation
+## 🧱 Lab Environment
+
+- Fedora Linux (osTicket server)
+- Apache + PHP + MariaDB (LAMP stack)
+- Windows / Linux client systems
+- Virtualization (Proxmox / virt-manager)
 
 ---
 
-## 🎫 Ticket Scenarios
-This lab includes real-world IT support scenarios such as:
+## ⚙️ What I Built
+
+- Deployed osTicket in a local Linux environment  
+- Configured Apache, PHP, and MariaDB services  
+- Set up admin panel, roles, and user access  
+- Created a functional help desk system for ticket simulation  
+- Integrated structured troubleshooting workflows  
+
+---
+
+## 🧠 Key Skills Demonstrated
+
+- Linux system administration  
+- Web server configuration (Apache/PHP)  
+- Database setup and connectivity (MariaDB)  
+- Troubleshooting HTTP errors (403, 404, 500)  
+- File permissions and SELinux management  
+- IT help desk workflow and ticket handling  
+
+---
+
+## 🔥 Troubleshooting Highlights
+
+This project emphasizes real-world problem solving, including:
+
+- Fixing HTTP 404 errors (incorrect file paths)  
+- Resolving 403 Forbidden issues (permissions & SELinux)  
+- Debugging PHP execution issues  
+- Installing missing dependencies (MySQLi, PHP modules)  
+- Resolving HTTP 500 errors during installation  
+
+👉 [View Full Troubleshooting Log](./troubleshooting-log.md)
+
+---
+
+## 🎫 Ticket Scenarios Practiced
 
 - Password resets and account lockouts  
 - Network connectivity issues (DNS, IP conflicts)  
 - Printer troubleshooting  
-- Shared folder access and permissions  
+- Shared folder permissions  
 - System performance issues  
 
 Each scenario includes:
-- Problem description  
+- Problem identification  
 - Troubleshooting steps  
 - Resolution  
 - Documentation  
 
 ---
 
-## 🔧 Skills Demonstrated
-- IT troubleshooting and problem-solving  
-- Ticket management and workflow handling  
-- User account management concepts  
-- Basic networking (DNS, connectivity issues)  
-- Documentation and communication of technical solutions  
+## 📸 Screenshots
+
+(images here )
 
 ---
 
-## 📈 Key Takeaways
-- Developed a structured approach to diagnosing and resolving IT issues  
-- Improved ability to document technical processes clearly  
-- Gained practical experience simulating a real help desk environment  
+## 📈 Outcome
+
+Successfully deployed a fully functional help desk system and simulated real IT support operations in a controlled lab environment.
 
 ---
 
 ## 🚀 Future Improvements
-- Integrate Active Directory for user management simulation  
-- Expand ticket scenarios with more advanced issues  
-- Explore additional ticketing systems (ServiceNow, Zendesk)  
+
+- Integrate Active Directory for centralized authentication  
+- Configure email-based ticketing (IMAP/SMTP)  
+- Expand ticket scenarios with advanced troubleshooting  
+- Implement monitoring and logging tools  
 
 ---
 
 ## 👤 Author
-Jamari James  
+
+**Jamari James**  
 Aspiring IT Support Specialist
