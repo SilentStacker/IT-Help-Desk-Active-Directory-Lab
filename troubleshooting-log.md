@@ -177,8 +177,6 @@ The experience reflects real-world responsibilities of IT Support and System Adm
 
 ---ermissions.
 
-**Resolution:**
-Recreated database user and reassigned privileges:
 
 ```sql
 DROP USER IF EXISTS 'osticketuser'@'localhost';
