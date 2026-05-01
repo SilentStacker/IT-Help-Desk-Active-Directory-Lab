@@ -1,186 +1,120 @@
-# 🛠️ Troubleshooting Log – osTicket Help Desk Deployment
+# Troubleshooting Log – osTicket Installation
 
-## 📌 Overview
-
-This document outlines the issues encountered during the deployment of an osTicket help desk system on a Fedora Linux environment using Apache, PHP, and MariaDB.
-Each issue includes a description, root cause, and resolution to demonstrate a structured troubleshooting approach.
+## Troubleshooting Method Used
+For each issue, I followed a structured approach:
+- Identified the error message
+- Researched likely causes
+- Applied targeted fixes
+- Verified the solution before moving forward
 
 ---
 
-## 🔴 Issue 1: MariaDB Service Not Installed or Unavailable
+## Issue: HTTP 403 Forbidden
+
+### Problem
+Accessing the osTicket setup page returned a 403 Forbidden error.
+
+### Cause
+Incorrect file permissions and/or SELinux restrictions preventing Apache from accessing the directory.
+
+### Troubleshooting Steps
+- Checked Apache service status
+- Verified directory path and permissions
+- Updated file ownership for web server access
+- Reviewed SELinux context settings
+
+### Resolution
+Corrected file permissions and ensured Apache had proper access.
+
+### Verification
+Confirmed the osTicket setup page loaded successfully in the browser without a 403 error.
+
+---
+
+## Issue: HTTP 404 Not Found
+
+### Problem
+The osTicket page could not be found when accessing the URL.
+
+### Cause
+Incorrect file placement or misconfigured web server document root.
+
+### Troubleshooting Steps
+- Verified osTicket files were in the correct directory
+- Checked Apache configuration
+- Confirmed correct URL path
+
+### Resolution
+Moved files to the correct directory and corrected configuration.
+
+### Verification
+Confirmed the osTicket page loaded correctly when navigating to the URL.
+
+---
+
+## Issue: HTTP 500 Internal Server Error
+
+### Problem
+The server returned a 500 error when attempting to load osTicket.
+
+### Cause
+Server-side misconfiguration or missing dependencies.
+
+### Troubleshooting Steps
+- Checked Apache error logs
+- Identified missing or misconfigured components
+- Restarted Apache after adjustments
+
+### Resolution
+Resolved configuration issues and ensured required services were running.
+
+### Verification
+Confirmed the site loaded successfully without server errors.
+
+---
+
+## Issue: Missing PHP Modules
+
+### Problem
+osTicket installer reported missing required PHP extensions.
+
+### Cause
+Required PHP modules were not installed on the system.
+
+### Troubleshooting Steps
+- Reviewed osTicket system requirements
+- Installed missing PHP modules (mysqli, gd, imap, etc.)
+- Restarted Apache service
+
+### Resolution
+Installed all required PHP extensions.
+
+### Verification
+Confirmed all required modules passed in the osTicket installer check.
+
+---
+
+## Issue: Database Connection Failure
+
+### Problem
+osTicket could not connect to the MySQL/MariaDB database.
+
+### Cause
+Incorrect database credentials or database not properly configured.
+
+### Troubleshooting Steps
+- Verified database service was running
+- Checked database name, username, and password
+- Confirmed user permissions in MariaDB# 🛠️ Troubleshooting Log – osTicket Help Desk Deployment
 
 **Description:**
-MariaDB service could not be started.
+Unable to connect to MariaDB using application credentials.
 
 **Error Message:**
-`mariadb.service does not exist`
+`ERROR 1045 (28000): Access denied for user 'osticketuser'@'localhost'`
 
 **Root Cause:**
-MariaDB server package was not installed.
-
-**Resolution:**
-Installed and enabled MariaDB service:
-
-```bash
-sudo dnf install mariadb-server -y
-sudo systemctl enable --now mariadb
-```
-
----
-
-## 🔴 Issue 2: osTicket Download Failure (HTTP 404)
-
-**Description:**
-Failed to download osTicket installation package.
-
-**Error Message:**
-HTTP 404 error and invalid ZIP file.
-
-**Root Cause:**
-Incorrect or outdated GitHub release URL.
-
-**Resolution:**
-Downloaded correct version and extracted files:
-
-```bash
-wget https://github.com/osTicket/osTicket/releases/download/v1.18.3/osTicket-v1.18.3.zip -O osticket.zip
-unzip osticket.zip
-```
-
----
-
-## 🔴 Issue 3: Missing Application Files After Extraction
-
-**Description:**
-Required `upload/` directory was not present.
-
-**Error Message:**
-`mv: cannot stat 'upload': No such file or directory`
-
-**Root Cause:**
-Corrupted or incomplete extraction due to failed download.
-
-**Resolution:**
-Re-downloaded package and verified correct extraction.
-
----
-
-## 🔴 Issue 4: Incorrect Web Root Directory (HTTP 404)
-
-**Description:**
-osTicket application not accessible via browser.
-
-**Root Cause:**
-Files were placed in an incorrect directory (`/var/www/ntml` instead of `/var/www/html`).
-
-**Resolution:**
-Moved files to correct Apache web root:
-
-```bash
-sudo mv upload /var/www/html/osticket
-```
-
----
-
-## 🔴 Issue 5: File Permissions and SELinux Restrictions (HTTP 403)
-
-**Description:**
-Access to osTicket directory was denied.
-
-**Error Message:**
-HTTP 403 Forbidden
-
-**Root Cause:**
-Incorrect file ownership, permissions, and SELinux context.
-
-**Resolution:**
-Adjusted permissions and SELinux settings:
-
-```bash
-sudo chown -R apache:apache /var/www/html/osticket
-sudo chmod -R 755 /var/www/html/osticket
-sudo restorecon -Rv /var/www/html/osticket
-```
-
----
-
-## 🔴 Issue 6: PHP Not Executing in Apache
-
-**Description:**
-Instead of loading the installer, the browser displayed a directory listing.
-
-**Root Cause:**
-PHP was not installed or properly configured with Apache.
-
-**Resolution:**
-Installed PHP and restarted Apache:
-
-```bash
-sudo dnf install php php-cli php-common -y
-sudo systemctl restart httpd
-```
-
----
-
-## 🔴 Issue 7: Missing MySQLi PHP Extension
-
-**Description:**
-Installer reported missing MySQLi extension.
-
-**Root Cause:**
-Required PHP module not installed.
-
-**Resolution:**
-Installed MySQLi extension:
-
-```bash
-sudo dnf install php-mysqlnd -y
-sudo systemctl restart httpd
-```
-
----
-
-## 🔴 Issue 8: Missing osTicket Configuration File
-
-**Description:**
-Installer could not locate `ost-config.php`.
-
-**Root Cause:**
-Configuration file was not created from the template.
-
-**Resolution:**
-Created configuration file:
-
-```bash
-sudo cp include/ost-sampleconfig.php include/ost-config.php
-```
-
----
-
-## 🔴 Issue 9: Configuration File Not Writable
-
-**Description:**
-Installer required write access to configuration file.
-
-**Error Message:**
-“Write access required to continue”
-
-**Root Cause:**
-Insufficient file permissions and SELinux restrictions.
-
-**Resolution:**
-Updated permissions and SELinux context:
-
-```bash
-sudo chown apache:apache /var/www/html/osticket/include/ost-config.php
-sudo chmod 666 /var/www/html/osticket/include/ost-config.php
-sudo restorecon -Rv /var/www/html/osticket
-sudo chcon -t httpd_sys_rw_content_t /var/www/html/osticket/include/ost-config.php
-```
-
----
-
-## 🔴 Issue 10: Database Authentication Failure (MySQL Error 1045)
+Incorrect password or improperly configured database user p# 🛠️ Troubleshooting Log – osTicket Help Desk Deployment
 
 **Description:**
 Unable to connect to MariaDB using application credentials.
@@ -196,7 +130,7 @@ Recreated database user and reassigned privileges:
 
 ```sql
 DROP USER IF EXISTS 'osticketuser'@'localhost';
-CREATE USER 'osticketuser'@'localhost' IDENTIFIED BY 'StrongPassword123!';
+CREATE USER 'osticketuser'@'localhost' IDENTIFIED BY 'secure-password';
 GRANT ALL PRIVILEGES ON osticket.* TO 'osticketuser'@'localhost';
 FLUSH PRIVILEGES;
 ```
@@ -240,6 +174,107 @@ sudo systemctl restart httpd mariadb
 
 This troubleshooting process demonstrates the ability to deploy, diagnose, and resolve issues in a multi-component IT system.
 The experience reflects real-world responsibilities of IT Support and System Administration roles, emphasizing both technical skill and problem-solving ability.
+
+---ermissions.
+
+**Resolution:**
+Recreated database user and reassigned privileges:
+
+```sql
+DROP USER IF EXISTS 'osticketuser'@'localhost';
+CREATE USER 'osticketuser'@'localhost' IDENTIFIED BY 'secure-password';
+GRANT ALL PRIVILEGES ON osticket.* TO 'osticketuser'@'localhost';
+FLUSH PRIVILEGES;
+```
+
+---
+
+## 🔴 Issue 11: Internal Server Error (HTTP 500)
+
+**Description:**
+Application failed after submitting installation form.
+
+**Error Message:**
+HTTP 500 Internal Server Error
+
+**Root Cause:**
+Database connection failure caused by incorrect credentials.
+
+**Resolution:**
+
+* Verified database connectivity
+* Corrected credentials
+* Restarted services:
+
+```bash
+sudo systemctl restart httpd mariadb
+```
+
+---
+
+## ✅ Key Takeaways
+
+* Developed a structured troubleshooting methodology
+* Gained experience diagnosing HTTP errors (403, 404, 500)
+* Improved understanding of Linux permissions and SELinux
+* Strengthened knowledge of web application architecture (Apache, PHP, MariaDB)
+* Practiced real-world IT problem-solving and documentation
+
+---
+
+## 📈 Summary
+
+This troubleshooting process demonstrates the ability to deploy, diagnose, and resolve issues in a multi-component IT system.
+The experience reflects real-world responsibilities of IT Support and System Administration roles, emphasizing both technical skill and problem-solving ability.
+
+---
+
+### Resolution
+Corrected credentials and ensured proper database permissions.
+
+### Verification
+Confirmed successful database connection during osTicket installation.
+
+---
+
+## Issue: Configuration File Permissions
+
+### Problem
+The osTicket configuration file was not writable during setup.
+
+### Cause
+File permissions were too restrictive.
+
+### Troubleshooting Steps
+- Checked file permissions for ost-config.php
+- Modified permissions to allow write access
+
+### Resolution
+Adjusted file permissions to allow installation to proceed.
+
+### Verification
+Confirmed the installer was able to write configuration settings successfully.
+
+---
+
+## Issue: Installation Form Not Submitting
+
+### Problem
+The osTicket installation form failed to submit.
+
+### Cause
+Likely due to missing dependencies, incorrect permissions, or configuration issues.
+
+### Troubleshooting Steps
+- Reviewed browser console for errors
+- Checked PHP modules and configuration
+- Verified file permissions and database connection
+
+### Resolution
+Resolved underlying configuration issues affecting form submission.
+
+### Verification
+Confirmed the installation form submitted successfully and proceeded to the next step.
 
 ---
 
