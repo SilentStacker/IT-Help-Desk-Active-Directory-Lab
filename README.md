@@ -85,14 +85,13 @@ Successfully deployed a fully functional help desk system and simulated real IT 
 
 ---
 
-## 🚀 Future Improvements
+## 🚧 Next Improvements
 
-- Integrate Active Directory for centralized authentication  
-- Configure email-based ticketing (IMAP/SMTP)  
-- Expand ticket scenarios with advanced troubleshooting  
-- Implement monitoring and logging tools  
-
----
+- Add screenshots of osTicket ticket workflows
+- Document Active Directory user/group management
+- Add a network diagram of the virtual lab
+- Add PowerShell automation examples
+- Configure email-based ticketing with IMAP/SMTP
 
 ## 👤 Author
 
