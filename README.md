@@ -11,6 +11,14 @@ It focuses on hands-on experience with ticket management, system deployment, and
 
 The lab replicates real support workflows including diagnosing problems, resolving user issues, and documenting solutions.
 
+## 🧭 Lab Architecture
+
+- Domain Controller: Windows Server (AD DS, DNS)
+- Client Machine: Windows 11 Pro (domain joined)
+- Ticketing System: osTicket (Linux-based)
+- Virtualization: KVM (virt-manager)
+- Domain: homelab.local
+
 ---
 
 ## 🧱 Lab Environment
