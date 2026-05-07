@@ -116,7 +116,7 @@ FLUSH PRIVILEGES;
 ### 🔴 Missing IMAP PHP Extension
 The osTicket installer flagged the `php-imap` module as unavailable in Fedora's repositories.
 
-![IMAP PHP Error](screenshots/imap%20php.png)
+![IMAP PHP Error](screenshots/imap-php.png)
 
 **Resolution:** Confirmed IMAP is optional for osTicket and continued installation with all required modules passing.
 
