@@ -75,7 +75,7 @@ sudo restorecon -Rv /var/www/html/osticket
 ### 🔴 HTTP 404 Not Found — Incorrect File Path
 osTicket files were placed in the wrong directory, causing Apache to return a 404.
 
-![404 Path Error](screenshots/404%20path%20error.png)
+![404 Path Error](screenshots/404-path-error.png)
 
 **Fix:**
 ```bash
