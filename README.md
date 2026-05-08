@@ -78,7 +78,7 @@ osTicket files were placed in the wrong directory, causing Apache to return a 40
 ![404 Path Error](screenshots/404-path-error.png)
 
 **Fix:**
-```bash
+```bash 
 sudo mv upload /var/www/html/osticket
 ```
 
