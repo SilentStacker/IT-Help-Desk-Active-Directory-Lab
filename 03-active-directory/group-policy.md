@@ -1,0 +1,1 @@
+![Group Policy](screenshots/Group_policy_Exp.png)

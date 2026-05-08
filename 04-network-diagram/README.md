@@ -6,8 +6,8 @@ Fedora 43 workstation using KVM and virt-manager.
 
 ## Lab Topology
 - **Host:** Fedora 43 Workstation · Hyprland WM · KVM / virt-manager
-- **VM 1:** Windows Server 2022 — Domain Controller (192.168.1.20)
-- **VM 2:** Windows 11 Pro — Domain Client (192.168.1.30)
+- **VM 1:** Windows Server 2022 — Domain Controller (192.168.122.20)
+- **VM 2:** Windows 11 Pro — Domain Client (192.168.122.42)
 - **Domain:** homelab.local · Subnet: 192.168.1.0/24
 
 ## Services Running
