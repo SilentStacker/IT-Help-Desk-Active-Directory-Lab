@@ -83,8 +83,6 @@ user issues, and documenting solutions the way a real helpdesk technician would.
 ---
 
 ## 📂 Repository Structure
-## 📂 Repository Structure
-
 ```
 IT-Help-Desk-Active-Directory-Lab/
 ├── 01-installation/          # Lab setup and installation steps
