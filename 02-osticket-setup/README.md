@@ -91,8 +91,8 @@ sudo restorecon -Rv /var/www/html/osticket
 ![404 Path Error](screenshots/404-path-error.png)
 ![HTTP 500 Error](screenshots/http-500-error.png)
 ![MySQL 1045 Error](screenshots/mysql-1045-error.png)
-![IMAP PHP Issue](screenshots/imap-php.png)
-![Admin Dashboard](screenshots/admin-dashboard.png)
+![IMAP PHP Issue](screenshots/imapphp.png)
+
 
 ---
 
