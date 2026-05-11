@@ -81,7 +81,8 @@ Re-downloaded the package using the correct URL and re-ran the extraction. Confi
 ### Symptom
 Browser displayed `404 Not Found` when navigating to the osTicket URL.
 
-![404 Path Error](screenshots/404-path-error.png)
+![404 Error](02-osticket-setup/screenshots/404-path-error.png)
+
 
 ### Cause
 The osTicket files were not placed in the correct Apache web root directory.
@@ -103,7 +104,7 @@ Navigated to `http://localhost/osticket` and confirmed the osTicket installer lo
 403 Forbidden
 ```
 
-![403 Permissions Error](screenshots/403-permissions-error.png)
+![403 Permissions Error](02-osticket-setup/screenshots/403-permissions-error.png)
 
 ### Cause
 Incorrect file permissions and SELinux restrictions prevented Apache from accessing the osTicket directory.
@@ -163,7 +164,7 @@ Reloaded the installer and confirmed MySQLi showed as passing in the requirement
 ### Symptom
 osTicket installer flagged multiple missing extensions: GD, IMAP, Intl, APCu.
 
-![IMAP PHP Error](screenshots/imap-php.png)
+![IMAP PHP Error](02-osticket-setup/screenshots/imap-php.png)
 
 ### Cause
 These optional but recommended PHP modules were not installed.
@@ -232,7 +233,8 @@ Confirmed the installer accepted the file and moved to the next setup step.
 ERROR 1045 (28000): Access denied for user 'osticketuser'@'localhost'
 ```
 
-![MySQL 1045 Error](screenshots/mysql-1045-error.png)
+![MySQL 1045 Error](02-osticket-setup/screenshots/mysql-104-error.png)
+
 
 ### Cause
 Incorrect database credentials or insufficient user permissions in MariaDB.
@@ -260,7 +262,8 @@ Confirmed successful login and database access.
 ### Symptom
 osTicket returned an `HTTP ERROR 500` after submitting the installation form. The installer loaded fine but failed on submission.
 
-![HTTP 500 Error](screenshots/http-500-error.png)
+![HTTP 500 Error](02-osticket-setup/screenshots/http-500-error.png)
+
 
 ### Cause
 A combination of factors:
@@ -349,8 +352,7 @@ Confirmed changes appeared correctly on the GitHub repository.
 
 Successfully deployed osTicket after resolving all 14 issues. Admin dashboard confirmed fully operational.
 
-![Admin Dashboard](screenshots/admin-dashboard.png)
-
+![Admin Dashboard](02-osticket-setup/screenshots/admin-dashboard.png)
 ---
 
 ## Key Lessons Learned
