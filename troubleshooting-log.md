@@ -233,7 +233,7 @@ Confirmed the installer accepted the file and moved to the next setup step.
 ERROR 1045 (28000): Access denied for user 'osticketuser'@'localhost'
 ```
 
-![MySQL 1045 Error](02-osticket-setup/screenshots/mysql-104-error.png)
+![MySQL 1045 Error](02-osticket-setup/screenshots/mysql-1045-error.png)
 
 
 ### Cause
